@@ -1,5 +1,5 @@
 #セルをファイルにする
-#%%writefile app.py
+%%writefile app.py
 
 import streamlit as st  #Streamli
 import os #環境変数
@@ -73,6 +73,7 @@ def PR_GE():
         "キーワード (強み、スキル、実績などを複数行で入力)",
         placeholder="例:\nPythonとデータ分析スキル\nチームリーダー経験3年\n顧客満足度20%向上に貢献"
     )
+    st.caption(f"現在の文字数: {len(user_keywords_ge)}文字")
 
     #キーワードリスト化
     keyword_list = [k.strip() for k in user_keywords_ge.split('\n') if k.strip()]
@@ -83,7 +84,7 @@ def PR_GE():
         "実績の詳細エピソード (PRに含めたい具体的な背景・行動・結果)",
         placeholder="例:\n前職でデータ収集の自動化を提案。Pythonスクリプトを自作し、作業時間を週10時間削減。"
     )
-
+    st.caption(f"現在の文字数: {len(user_episode)}文字")
 
 
     #Gemini送信プロント
@@ -215,6 +216,7 @@ def AI_QU():
         "キーワード (強み、スキル、実績などを複数行で入力)",
         placeholder="例:\nPythonとデータ分析スキル\nチームリーダー経験3年\n顧客満足度20%向上に貢献"
     )
+    st.caption(f"現在の文字数: {len(user_keywords_qu)}文字")
 
     #キーワードリスト化
     keyword_list = [k.strip() for k in user_keywords_qu.split('\n') if k.strip()]
@@ -225,7 +227,7 @@ def AI_QU():
         "自己PRの素材入力（AI面接官に伝えたい実績・自己PR）",
         placeholder="例:\n前職でデータ収集の自動化を提案し、Pythonスクリプトを自作して週10時間の作業削減を実現しました。"
     )
-
+    st.caption(f"現在の文字数: {len(user_pr)}文字")
 
     prompt = f"""
         あなたは、利用シーン **{user_use}** における応募職種（または学科） **{user_job_or_subject}** の採用面接を担当する、**厳格で経験豊富なプロの面接官AI** です。
@@ -342,13 +344,14 @@ def AI_EV():
     "質問文(面接官に聞かれる質問を入力)",
     placeholder="例:\n自己PRでアピールできる強みを教えてください"
     )
+    st.caption(f"現在の文字数: {len(user_question)}文字")
 
     #回答入力
     user_answer = st.text_area(
     "回答（質問に対する回答を入力）",
     placeholder="例:\n私の強みは責任感の強さです。どんな状況でも最後までやり遂げる姿勢を大切にしています。"
     )
-
+    st.caption(f"現在の文字数: {len(user_answer)}文字")
 
     prompt = f"""
     あなたは、利用シーン **{user_use}** の応募職種（または学科） **{user_job_or_subject}** の採用を任された、

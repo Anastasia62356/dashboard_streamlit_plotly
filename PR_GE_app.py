@@ -63,7 +63,7 @@ def PR_GE():
 
 
     #文字数スライダー
-    char_count = st.sidebar.slider("文字数を選択", 150, 450, 150)
+    char_count = st.sidebar.slider("文字数", 150, 450, 150)
     max_char_count = char_count + 20
     min_char_count = char_count - 20
 
